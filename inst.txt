@@ -1,0 +1,7 @@
+- create requirements.txt and include:
+    fastapi
+    uvicorn[standard]
+
+
+- install these dependencies:
+pip3 install -r requirements.txt
