@@ -5,3 +5,14 @@
 
 - install these dependencies:
 pip3 install -r requirements.txt
+======================================
+
+#Working with apis:
+===================
+1- check main.py
+
+2 - uvicorn main:app --port 9001
+    uvicorn main:app --reload   (tracking refresh)
+
+    #an alternative to postman:
+    http://127.0.0.1:9001/docs
