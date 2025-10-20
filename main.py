@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from enum import Enum
+from pydantic import BaseModel
 
 # Create FastAPI instance
 app = FastAPI()
@@ -94,5 +95,29 @@ async def get_shortaged_items(stock: bool = True):
     #http://127.0.0.1:8000/stock?stock=off
     else:
         return {"message": "All items are in stock"}
+    
+#==========================================================================================================
+#Passing request body
+
+#import pydantic 
+
+class Item(BaseModel):
+    name: str
+    description: str| None = None
+    price: float
+    tax: float | None = None
+
+@app.post("/item")
+async def create_item(item: Item):
+    item_dict = item.model_dump()
+
+    price_with_tax = item.price + (item.price * item.tax) if item.tax else item.price
+
+    item_dict.update({"price_with_tax": price_with_tax})
+    return item_dict
+
+@app.put("/item/{item_id}")
+async def update_item(item_id: int, item: Item):
+    return {"item_id": item_id, **item.model_dump()}
 
    
