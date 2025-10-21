@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from enum import Enum
 from pydantic import BaseModel
+from fastapi import Query
 
 # Create FastAPI instance
 app = FastAPI()
@@ -119,5 +120,17 @@ async def create_item(item: Item):
 @app.put("/item/{item_id}")
 async def update_item(item_id: int, item: Item):
     return {"item_id": item_id, **item.model_dump()}
+
+#==========================================================================================================
+#string validation for query parameters
+#from fastapi import Query
+
+@app.get("/validate")
+async def validate_string(name: str=Query(..., requiered = True, min_length=3, max_length=10, regex="^[a-zA-Z]+$")
+                          ,email: str = Query(..., requiered = True, min_length=5, max_length=50, regex="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$")):
+   return {"name": name , "email": email}
+
+
+
 
    
