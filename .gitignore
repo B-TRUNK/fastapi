@@ -1,46 +1,20 @@
-# Python compiled files
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-*.pdb
-*.log
-
-# Virtual environments
-venv/
-.venv/
-env/
-.pyenv/
-pyvenv.cfg
+# Virtual environment
 bin/
 lib/
 lib64/
 include/
-share/
+pyvenv.cfg
+__pycache__/
+.venv/
+venv/
 
-# IDE files
-.vscode/
-.idea/
-*.swp
+# Python cache
+*.pyc
+*.pyo
+*.pdb
+*.log
 
-# Environment variables and secrets
+# Environment and system
 .env
-*.env
-
-# OS-specific files
 .DS_Store
-Thumbs.db
 
-# Test / coverage
-.coverage
-htmlcov/
-.cache/
-pytest_cache/
-
-# Build and dist folders
-build/
-dist/
-*.egg-info/
-
-# Jupyter / IPython
-.ipynb_checkpoints/
